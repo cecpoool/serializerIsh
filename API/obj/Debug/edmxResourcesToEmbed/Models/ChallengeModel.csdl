@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TryAgainChallengeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CatID" />
+    </Key>
+    <Property Name="CatID" Type="Int32" Nullable="false" />
+    <Property Name="CatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__CatID__59FA5E80" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustID" />
+    </Key>
+    <Property Name="CustID" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegID" Type="Int32" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Postcode" Type="Int32" />
+    <Property Name="Region" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Region1" Relationship="Self.FK__Customer__Region__5629CD9C" FromRole="Customer" ToRole="Region" />
+    <NavigationProperty Name="Segment" Relationship="Self.FK__Customer__SegID__5535A963" FromRole="Customer" ToRole="Segment" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__CustID__571DF1D5" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="CustID" />
+      <PropertyRef Name="ProdID" />
+      <PropertyRef Name="OrderDate" />
+    </Key>
+    <Property Name="CustID" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProdID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="ShipDate" Type="DateTime" Precision="0" />
+    <Property Name="ShipMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Order__CustID__571DF1D5" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Order__ProdID__5812160E" FromRole="Order" ToRole="Product" />
+    <NavigationProperty Name="Shipping" Relationship="Self.FK__Order__ShipMode__59063A47" FromRole="Order" ToRole="Shipping" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProdID" />
+    </Key>
+    <Property Name="ProdID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CatID" Type="Int32" Nullable="false" />
+    <Property Name="ProdDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Product__CatID__59FA5E80" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__ProdID__5812160E" FromRole="Product" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="Region1" />
+    </Key>
+    <Property Name="Region1" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Region__5629CD9C" FromRole="Region" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Segment">
+    <Key>
+      <PropertyRef Name="SegtID" />
+    </Key>
+    <Property Name="SegtID" Type="Int32" Nullable="false" />
+    <Property Name="SegName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__SegID__5535A963" FromRole="Segment" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Shipping">
+    <Key>
+      <PropertyRef Name="ShippingMeth" />
+    </Key>
+    <Property Name="ShippingMeth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__ShipMode__59063A47" FromRole="Shipping" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK__Product__CatID__59FA5E80">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__Region__5629CD9C">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Region1" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Region" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__SegID__5535A963">
+    <End Role="Segment" Type="Self.Segment" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Segment">
+        <PropertyRef Name="SegtID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="SegID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__CustID__571DF1D5">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__ProdID__5812160E">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProdID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ProdID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__ShipMode__59063A47">
+    <End Role="Shipping" Type="Self.Shipping" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shipping">
+        <PropertyRef Name="ShippingMeth" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ShipMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TryAgainChallengeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Regions" EntityType="Self.Region" />
+    <EntitySet Name="Segments" EntityType="Self.Segment" />
+    <EntitySet Name="Shippings" EntityType="Self.Shipping" />
+    <AssociationSet Name="FK__Product__CatID__59FA5E80" Association="Self.FK__Product__CatID__59FA5E80">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__Region__5629CD9C" Association="Self.FK__Customer__Region__5629CD9C">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__SegID__5535A963" Association="Self.FK__Customer__SegID__5535A963">
+      <End Role="Segment" EntitySet="Segments" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__CustID__571DF1D5" Association="Self.FK__Order__CustID__571DF1D5">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__ProdID__5812160E" Association="Self.FK__Order__ProdID__5812160E">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__ShipMode__59063A47" Association="Self.FK__Order__ShipMode__59063A47">
+      <End Role="Shipping" EntitySet="Shippings" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,6 @@
+C:\Users\cjmco\source\repos\Challenge1\Challenge1\bin\Debug\Challenge1.dacpac
+C:\Users\cjmco\source\repos\Challenge1\Challenge1\bin\Debug\Challenge1.dll
+C:\Users\cjmco\source\repos\Challenge1\Challenge1\bin\Debug\Challenge1.pdb
+C:\Users\cjmco\source\repos\Challenge1\Challenge1\obj\Debug\Challenge1.dll
+C:\Users\cjmco\source\repos\Challenge1\Challenge1\obj\Debug\Challenge1.pdb
+C:\Users\cjmco\source\repos\Challenge1\Challenge1\obj\Debug\Challenge1.sqlprojAssemblyReference.cache

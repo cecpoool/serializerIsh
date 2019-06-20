@@ -1,0 +1,26 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Category] (Table)
+       [dbo].[Customer] (Table)
+       [dbo].[Order] (Table)
+       [dbo].[Product] (Table)
+       [dbo].[Region] (Table)
+       [dbo].[Segment] (Table)
+       [dbo].[Shipping] (Table)
+       Foreign Key: unnamed constraint on [dbo].[Customer] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Customer] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Order] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Order] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Product] (Foreign Key)
+
+** Supporting actions

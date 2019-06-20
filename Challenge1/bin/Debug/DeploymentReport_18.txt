@@ -1,0 +1,81 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Customer]
+       [dbo].[Order]
+       [dbo].[Product]
+       [dbo].[Region]
+       [dbo].[Shipping]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column CatName in table [dbo].[Category] is currently  NVARCHAR (50) NOT NULL but is being changed to 
+         VARCHAR (50) NOT NULL. Data loss could occur.
+       The column [dbo].[Customer].[State] is being dropped, data loss could occur.
+       The type for column Country in table [dbo].[Customer] is currently  NVARCHAR (50) NULL but is being changed to  VARCHAR
+         (50) NULL. Data loss could occur.
+       The type for column CustID in table [dbo].[Customer] is currently  NVARCHAR (8) NOT NULL but is being changed to 
+         VARCHAR (8) NOT NULL. Data loss could occur.
+       The type for column FullName in table [dbo].[Customer] is currently  NVARCHAR (50) NULL but is being changed to  VARCHAR
+         (50) NULL. Data loss could occur.
+       The type for column Region in table [dbo].[Customer] is currently  NVARCHAR (12) NULL but is being changed to  VARCHAR
+         (12) NULL. Data loss could occur.
+       The type for column CustID in table [dbo].[Order] is currently  NVARCHAR (8) NOT NULL but is being changed to  VARCHAR
+         (8) NOT NULL. Data loss could occur.
+       The type for column ProdID in table [dbo].[Order] is currently  NVARCHAR (16) NOT NULL but is being changed to  VARCHAR
+         (16) NOT NULL. Data loss could occur.
+       The type for column ShipMode in table [dbo].[Order] is currently  NVARCHAR (50) NULL but is being changed to  VARCHAR
+         (50) NULL. Data loss could occur.
+       The column [dbo].[Product].[Description] is being dropped, data loss could occur.
+       The type for column ProdID in table [dbo].[Product] is currently  NVARCHAR (16) NOT NULL but is being changed to 
+         VARCHAR (16) NOT NULL. Data loss could occur.
+       The type for column Region in table [dbo].[Region] is currently  NVARCHAR (12) NOT NULL but is being changed to  VARCHAR
+         (12) NOT NULL. Data loss could occur.
+       The type for column SegName in table [dbo].[Segment] is currently  NVARCHAR (50) NOT NULL but is being changed to 
+         VARCHAR (50) NOT NULL. Data loss could occur.
+       The type for column ShippingMeth in table [dbo].[Shipping] is currently  NVARCHAR (50) NOT NULL but is being changed to 
+         VARCHAR (50) NOT NULL. Data loss could occur.
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[Customer] (Foreign Key)
+       unnamed constraint on [dbo].[Customer] (Foreign Key)
+       unnamed constraint on [dbo].[Order] (Foreign Key)
+       unnamed constraint on [dbo].[Order] (Foreign Key)
+       unnamed constraint on [dbo].[Order] (Foreign Key)
+       unnamed constraint on [dbo].[Product] (Foreign Key)
+     Alter
+       [dbo].[Category] (Table)
+       [dbo].[Segment] (Table)
+     Table rebuild
+       [dbo].[Customer] (Table)
+       [dbo].[Order] (Table)
+       [dbo].[Product] (Table)
+       [dbo].[Region] (Table)
+       [dbo].[Shipping] (Table)
+
+** Supporting actions
+     Create
+       Foreign Key: unnamed constraint on [dbo].[Customer] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Customer] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Order] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Order] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Order] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Product] (Foreign Key)
+
+The type for column CatName in table [dbo].[Category] is currently  NVARCHAR (50) NOT NULL but is being changed to  VARCHAR (50) NOT NULL. Data loss could occur.
+The column [dbo].[Customer].[State] is being dropped, data loss could occur.
+The type for column Country in table [dbo].[Customer] is currently  NVARCHAR (50) NULL but is being changed to  VARCHAR (50) NULL. Data loss could occur.
+The type for column CustID in table [dbo].[Customer] is currently  NVARCHAR (8) NOT NULL but is being changed to  VARCHAR (8) NOT NULL. Data loss could occur.
+The type for column FullName in table [dbo].[Customer] is currently  NVARCHAR (50) NULL but is being changed to  VARCHAR (50) NULL. Data loss could occur.
+The type for column Region in table [dbo].[Customer] is currently  NVARCHAR (12) NULL but is being changed to  VARCHAR (12) NULL. Data loss could occur.
+The type for column CustID in table [dbo].[Order] is currently  NVARCHAR (8) NOT NULL but is being changed to  VARCHAR (8) NOT NULL. Data loss could occur.
+The type for column ProdID in table [dbo].[Order] is currently  NVARCHAR (16) NOT NULL but is being changed to  VARCHAR (16) NOT NULL. Data loss could occur.
+The type for column ShipMode in table [dbo].[Order] is currently  NVARCHAR (50) NULL but is being changed to  VARCHAR (50) NULL. Data loss could occur.
+The column [dbo].[Product].[Description] is being dropped, data loss could occur.
+The type for column ProdID in table [dbo].[Product] is currently  NVARCHAR (16) NOT NULL but is being changed to  VARCHAR (16) NOT NULL. Data loss could occur.
+The type for column Region in table [dbo].[Region] is currently  NVARCHAR (12) NOT NULL but is being changed to  VARCHAR (12) NOT NULL. Data loss could occur.
+The type for column SegName in table [dbo].[Segment] is currently  NVARCHAR (50) NOT NULL but is being changed to  VARCHAR (50) NOT NULL. Data loss could occur.
+The type for column ShippingMeth in table [dbo].[Shipping] is currently  NVARCHAR (50) NOT NULL but is being changed to  VARCHAR (50) NOT NULL. Data loss could occur.
+
